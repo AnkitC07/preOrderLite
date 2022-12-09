@@ -7,7 +7,7 @@ import { Button } from '@shopify/polaris'
 
 
 const SubRow = ({ data }) => {
-  console.log(data, "variants")
+  console.log("Variant  : ", data)
   return (
     <>
       {
@@ -46,7 +46,7 @@ const SubRow = ({ data }) => {
                     </td>
                   </>
                   :
-                  <p>No Variants</p>}
+                  ''}
               </tr>
             </>
           )

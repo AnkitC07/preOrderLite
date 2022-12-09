@@ -13,7 +13,7 @@ import applyAuthMiddleware  from "./middleware/auth.js";
 import verifyRequest, {
   getAccessToken,
   getShopName,
-  
+  getSession
 } from "./middleware/verify-request.js";
 import { setupGDPRWebHooks } from "./gdpr.js";
 import productCreator from "./helpers/product-creator.js";
@@ -44,6 +44,8 @@ Shopify.Context.initialize({
   SESSION_STORAGE: new Shopify.Session.SQLiteSessionStorage(DB_PATH),
   ...(process.env.SHOP_CUSTOM_DOMAIN && {CUSTOM_SHOP_DOMAINS: [process.env.SHOP_CUSTOM_DOMAIN]}),
 });
+
+
 
 // NOTE: If you choose to implement your own storage strategy using
 // Shopify.Session.CustomSessionStorage, you MUST implement the optional
@@ -165,41 +167,22 @@ export async function createServer(
 app.post('/api/get-products',async (req,res) => {
 try {
 // console.log("Query: ",req.body.query)
-//       const client = new Shopify.Clients.Graphql(
-//         getShopName,
-//         getAccessToken
-//       );
+      const client = new Shopify.Clients.Graphql(
+        getShopName,
+        getAccessToken
+      );
 
 
-//       const products = await client.query({
-//         data: req.body.query,
-//       });
+      const products = await client.query({
+        data: req.body.query,
+      });
 
-//       res.status(200).json({
-//           // data: {products:result.body.products,pageInfo:result.pageInfo},
-//           ...products.body.data.products,
-//       });
+      res.status(200).json({
+          // data: {products:result.body.products,pageInfo:result.pageInfo},
+          // ...products.body.data.products,
+          data: 'ankitttt'
+      });
 
-
-
-// fetch(`https://vijay-laravel-app.myshopify.com/admin/api/2019-07/products.json?limit=3`)
-//             .then((data) => data.json())
-//             .then((res) => console.log(res))
-//             .catch((err) => console.log(err))
-
-
-      async function makeRequest() { 
-      const config = { 
-      method: 'get', 
-      url: 'https://vijay-laravel-app.myshopify.com/admin/api/2019-07/products.json?limit=3' 
-      } 
-      
-      axios.get('https://vijay-laravel-app.myshopify.com/admin/api/2019-07/products.json?limit=3').then((res)=>console.log(res)).catch((err)=>console.log(err)) 
-      // console.log('Response: ',res); 
-      // console.log(res.status); 
-      } 
- 
-makeRequest(); 
 
       // const shopify = new Shopify({
       //   shopName: getShopName,
@@ -217,9 +200,6 @@ makeRequest();
       //   } while (params !== undefined);
       // })().catch(console.error);
 
-      res.status(200).json({
-                data: 'CHECKING'
-            });
   } catch (error) {
     console.log("Error: ",error)
         res.sendStatus(403)
@@ -227,49 +207,58 @@ makeRequest();
 
 })
 
+// Getting Products FOr Table
+
   app.post('/api/getProducts', async (req, res) => {
     console.log('checking')
     // console.log('Request: ',req.body)
     // console.log('accessToken',getAccessToken)
     // console.log('ShopName',getShopName)
     try {
-    const query = req.body.pageInfo
+    const query = req.body.query
     console.log("Query: ",query)
       const client = new Shopify.Clients.Rest(getShopName, getAccessToken)
 
-
-    // switch (req.body) {
-    //   case {}:{
-
-    //     const result = await client.get({
-    //     path: 'products',
-    //     query: {limit: 10}
-        
-    //   })
-    //   }
-    //     break;
-    
-    //   default:{
-
-    //    const result = await client.get(req.body.nextPage)
-    //   }
-    //     break;
-    // }
-// if(req.body.length >0){
-//   const result = await client.get(req.body.nextPage)
-// }else(
-//   const result = await client.get({
-//         path: 'products',
-//         query: {limit: 10}
-//          })
-// )
       const result = await client.get(query)
 
       let resultList = {products: result.body.products, pageInfo: result.pageInfo}
-      // console.log("",result.pageInfo.nextPage)
       res.status(200).json(resultList)
     } catch (error) {
       console.log(error)
+      res.sendStatus(403)
+    }
+  })
+
+
+// Search Api
+    app.post('/api/searchProducts', async (req, res) => {
+    
+    try {
+    // const query = req.body.query
+    // console.log("Query: ",query)
+      const productId = "11235813213455";
+      const client = new Shopify.Clients.Rest(getShopName, getAccessToken)
+
+
+      //  const getData =  await shopify.rest.Product.find({
+      //       session: getSession,
+      //       id: 632910392,
+      //     });
+      //     console.log(getData)
+
+
+      
+      // `session` is built as part of the OAuth process
+      // const client = new shopify.clients.Rest({session});
+      // const product = await client.get({
+      //   path: `products`,
+      //   query: {query: "chain-bracelet"}
+      // });
+      // console.log(product)
+      res.status(200).json({msg:' Testing'})
+
+    } catch (error) {
+      console.log("ERRor: ",error)
       res.sendStatus(403)
     }
   })

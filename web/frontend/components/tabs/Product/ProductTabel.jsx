@@ -23,10 +23,10 @@ function ProductTabel() {
     //REST APi
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [pageInfo, setPageInfo] = useState({
-        path: 'products',
-        query: { limit: 10 }
-    })
+    // const [pageInfo, setPageInfo] = useState({
+    //     path: 'products',
+    //     query: { limit: 50 }
+    // })
     //*******************//
 
 
@@ -37,10 +37,10 @@ function ProductTabel() {
     const [queryValue, setQueryValue] = useState(null);
 
     const [productList, setProductList] = useState([])
-    // const [pageInfo, setPageInfo] = useState({
-    //     hasPreviousPage: false,
-    //     hasNextPage: false,
-    // })
+    const [pageInfo, setPageInfo] = useState({
+        hasPreviousPage: false,
+        hasNextPage: false,
+    })
 
 
     const _loadProducts = (query) => {
@@ -62,7 +62,7 @@ function ProductTabel() {
     }
 
     //REST API
-    const retriveProduct = async () => {
+    const retriveProduct = async (query) => {
 
         await fetch(`/api/getProducts`, {
             method: "POST",
@@ -70,7 +70,7 @@ function ProductTabel() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                pageInfo,
+                query,
             })
         })
             .then((res) => {
@@ -137,26 +137,40 @@ function ProductTabel() {
     ];
 
 
-    const rows =
-        data.map((data) => (
-            [
-                <ListProduct data={data} />,
-                'sfd', 'fsf'
-
-            ]
-
-        ))
+    // const rows =
+    //     data.map((data) => (
+    //         [
+    //             <ListProduct data={data} />,
+    //             'sfd', 'fsf'
+    //         ]
+    //     ))
 
     useEffect(() => {
-        // let query = Get_Products({ first: 5 })
-        // _loadProducts(query)
-        retriveProduct()
+        let query = {
+            path: 'products',
+            query: { limit: 50 }
+
+        }
+        retriveProduct(query)
+        //     let query = { first: 5 }
+        //     _loadProducts(query)
     }, [])
+
     // useEffect(() => {
-    //     fetch(`https://vijay-laravel-app.myshopify.com/admin/api/2019-07/products.json?limit=3`)
-    //         .then((data) => data.json())
-    //         .then((res) => console.log(res))
-    //         .catch((err) => console.log(err))
+    //     fetch("/api/searchProducts", {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         // body: JSON.stringify({
+    //         //     query,
+    //         // })
+    //     }).then((data) => data.json()).
+    //         then((res) => {
+    //             console.log(res)
+    //             // setPageInfo(res.pageInfo)
+    //             // setProductList([...productList, ...res.edges])
+    //         }).catch((err) => console.log("Err: ", err))
     // }, [])
 
     return (
@@ -227,16 +241,7 @@ function ProductTabel() {
                             <div className="row">
                                 <div className="col-md-12">
 
-                                    {/* <Pagination
-                                        hasPrevious
-                                        onPrevious={() => {
-                                            console.log('Previous');
-                                        }}
-                                        hasNext
-                                        onNext={() => {
-                                            console.log('Next');
-                                        }}
-                                    /> */}
+
                                     <Pagination
                                         // hasPrevious={pageInfo.hasPreviousPage}
                                         // onPrevious={() => {
@@ -254,19 +259,25 @@ function ProductTabel() {
                                         //     })
                                         //     _loadProducts(query)
                                         // }}
-                                        hasPrevious={pageInfo.hasPreviousPage}
+                                        hasPrevious={'prevPage' in pageInfo}
                                         onPrevious={() => {
-                                            let query = Get_Prev_Products({
-                                                last: 5,
-                                                before: productList.length ? productList[0].cursor : '',
-                                            })
-                                            _loadProducts(query)
+                                            // setPageInfo(pageInfo.nextPage)
+                                            let query = {
+                                                path: 'products',
+                                                query: pageInfo.prevPage.query,
+                                            }
+                                            // console.log(pageInfo)
+                                            retriveProduct(query)
                                         }}
                                         hasNext={'nextPage' in pageInfo}
                                         onNext={() => {
-                                            setPageInfo(pageInfo.nextPage)
-                                            console.log(pageInfo)
-                                            retriveProduct()
+                                            // setPageInfo(pageInfo.nextPage)
+                                            let query = {
+                                                path: 'products',
+                                                query: pageInfo.nextPage.query,
+                                            }
+                                            // console.log(pageInfo)
+                                            retriveProduct(query)
                                         }}
                                     />
 

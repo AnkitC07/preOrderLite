@@ -6,13 +6,13 @@ import { useAuthenticatedFetch } from '../../../hooks/useAuthenticatedFetch';
 import { useState } from 'react';
 
 const Product = () => {
-    const [loading, setLoading] = useState(true)
-    const [data, setData] = useState([])
-    const [pageInfo, setPageInfo] = useState({
-        path: 'products',
-        query: { limit: 10 }
-    })
-    const fetch = useAuthenticatedFetch()
+    // const [loading, setLoading] = useState(true)
+    // const [data, setData] = useState([])
+    // const [pageInfo, setPageInfo] = useState({
+    //     path: 'products',
+    //     query: { limit: 10 }
+    // })
+    // const fetch = useAuthenticatedFetch()
 
 
     // GET-PRODUCTS
