@@ -1,0 +1,352 @@
+.container {
+    max-width: 900px !important;
+    /* padding: 0px; */
+}
+
+.navbar-wrapper .Polaris-Tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: flex-start;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* .navbar-wrapper .Polaris-Card .Polaris-Tabs__Wrapper {
+    position: fixed;
+    background: #f3f3f3 !important;
+    width: 100%;
+    left: 0;
+    z-index: 9999;
+    top: 0;
+     height: 100vh; 
+} */
+.navbar-wrapper .Polaris-Tabs__Wrapper {
+    position: fixed;
+    background: #f3f3f3 !important;
+    width: 100%;
+    left: 0;
+    z-index: 9999;
+    top: 0;
+}
+
+.row.wlcm_box_main {
+    margin-top: 65px !important;
+}
+
+.wlcm_box_main .col-md-12 {
+    border-bottom: 1px solid #e3e5e8;
+    padding: 10px 15px 5px;
+    margin-bottom: 10px;
+}
+
+.wlcm_box ul {
+    padding: 0;
+}
+
+.fa-cog:before {
+    content: "\f013";
+}
+
+.wlcm_box ul li {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #a0a3ab;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.wlcm_box p {
+    color: #a0a3ab;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 15px;
+}
+
+.dashboard .Polaris-Card__Section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 10px 15px;
+}
+
+.dashboard .Polaris-Card__SectionHeader h3.Polaris-Text--root.Polaris-Text--headingSm.Polaris-Text--semibold {
+    font-size: 16px;
+}
+
+.dashboard .Polaris-Card__Section h4 {
+    font-weight: 600;
+    padding: 5px 0px;
+}
+
+.Polaris-Card {
+    border-radius: 4px;
+}
+
+.Polaris-Modal-Dialog__Modal {
+    max-width: 45%;
+}
+
+.modal_section h6.Polaris-Text--root.Polaris-Text--headingSm.Polaris-Text--semibold {
+    width: 40%;
+}
+
+/* .modal_section section.Polaris-Modal-Section {
+    display: flex;
+    align-items: center;
+} */
+.TagDivModal {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+
+}
+
+.modal_section .Polaris-Modal-Section {
+
+    padding: 0
+}
+
+.textfield_dashboard {
+    width: 100%;
+}
+
+.productTabel {
+    margin-top: 25px;
+}
+
+.productTabel .Polaris-DataTable__Cell--verticalAlignTop {
+    vertical-align: middle;
+    padding: 0px 15px;
+    text-align: left;
+}
+
+.productTabel .Polaris-ResourceList {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.customBtn {
+    border: 1px solid black;
+    background: transparent;
+    border-color: rgba(99, 115, 129, 0.4);
+    box-shadow: none;
+    height: 30px;
+    width: 35px;
+    border-radius: 4px;
+}
+
+span.tagnamevalue {
+    margin-left: 25px;
+    color: #a0a3ab;
+}
+
+.tagname {
+    display: flex;
+    align-items: center;
+}
+
+.Polaris-IndexTable__LoadingPanel {
+    top: -9px;
+}
+
+.productTabel .Polaris-ResourceItem__Content {
+    display: flex;
+    align-items: center;
+}
+
+.productTabel td {
+    vertical-align: middle;
+}
+
+.editButton button.Polaris-Button {
+    padding: 0;
+}
+
+.container.pagination {
+    padding: 15px;
+    background: rgba(243, 244, 246);
+    border-bottom: 1px solid lightgray;
+}
+
+/* TABLE CSS */
+
+body {
+    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.maincontainer {
+    /* height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .container {
+    margin: 20px;
+} */
+
+.fa-chevron-down,
+.fa-chevron-up {
+    margin: 5px;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    background: transparent;
+    border-color: rgba(99, 115, 129, 0.6);
+    box-shadow: none;
+    color: #374047;
+}
+
+/* .fa-chevron-down:focus{
+    transform: rotate(180deg);
+} */
+/* .Polaris-Stack__Item {
+    width: 50%;
+} */
+
+/* .button-stack-container {
+    width: 400px;
+    height: 160px;
+} */
+.design-container {
+    width: fit-content;
+    margin: 20px;
+}
+
+/* .Polaris-Stack {
+    --pc-stack-spacing: var(--p-space-4);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    margin-top: 13px;
+    margin-left: calc(var(--pc-stack-spacing)*-1);
+} */
+
+.input-text {
+    margin-left: 172px;
+}
+
+#slider-7 {
+    margin: 0 10px;
+    padding: 6px;
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 3px 2px 1px grey;
+    cursor: pointer;
+}
+
+.button-stack {
+    margin-bottom: 85px;
+}
+
+/* .row{
+    margin-top: 145px;
+    margin-bottom: 35px;
+} */
+.savebutton-card {
+    display: flex;
+    justify-content: end;
+    /* position: relative;
+        bottom: -19px;
+        left: -20px; */
+    padding: 15px;
+    /* width: 421px; */
+    box-shadow: 0px 0px 1px grey;
+    border-radius: 4px;
+}
+
+.image {
+    display: inline-block;
+    margin: 0 20px;
+    margin-left: 60px;
+}
+
+.image-main {
+    display: inline-block;
+    margin: 0 10px;
+    margin-right: 20px;
+}
+
+.tab-wrapper {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+.productdesign .Polaris-Card__Section {
+    padding: 0;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.Polaris-Card__Header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+input[type="color"] {
+    border: none;
+    background: inherit;
+    height: 36px;
+    cursor: pointer;
+}
+
+select#PolarisSelect1 {
+    cursor: pointer;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+}
+
+.preorder-text {
+    margin-left: 11px;
+}
+
+.preorder-text-green {
+    color: darkgreen;
+    /* font-weight: 600; */
+}
+
+.preorder-text-red {
+    color: rgb(212, 19, 19);
+    /* font-weight: 600; */
+}
+
+.Polaris-RangeSlider-SingleThumb__InputWrapper input {
+    -webkit-appearance: auto;
+    padding: 0px;
+}
+
+/* .effect-4,
+.effect-5,
+.effect-6{border: 0; padding: 5px 0 7px; border: 1px solid transparent; border-bottom-color: #ccc; transition: 0.4s;}
+
+.effect-4:focus,
+.effect-5:focus,
+.effect-6:focus{padding: 5px 14px 7px; transition: 0.4s;}
+
+.effect-4 ~ .focus-border{position: absolute; height: 0; bottom: 0; left: 0; width: 100%; transition: 0.4s; z-index: -1;}
+.effect-4:focus ~ .focus-border{transition: 0.4s; height: 36px; border: 2px solid #4caf50; z-index: 1;} */
